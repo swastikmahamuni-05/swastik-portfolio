@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-instrument-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "Courier New", monospace;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+
+  /* Substrate Layers (Editorial Dark Palette) */
+  --color-canvas: #06070d;
+  --color-surface-lowest: #0a0d1d;
+  --color-surface: #0f1223;
+  --color-surface-elevated: #171b2b;
+  --color-surface-high: #26293a;
+  --color-surface-highest: #313446;
+
+  /* Hairline Borders & Structural Rules */
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-medium: rgba(255, 255, 255, 0.16);
+  --color-border-active: rgba(0, 229, 255, 0.4);
+
+  /* Typography Colors */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* Emissive Accents (Used Sparingly) */
+  --color-accent-cyan: #00e5ff;
+  --color-accent-cyan-dim: #00daf3;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-blue: #3b82f6;
+  --color-status-green: #10b981;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border-subtle);
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--color-canvas);
+    color: var(--color-text-primary);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Accessible visible focus states */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-cyan);
+    outline-offset: 2px;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background-color: var(--color-accent-cyan);
+    color: #06070d;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
